@@ -31,14 +31,17 @@
 .score {
     display: flex;
     justify-content: space-around;
-    height: 25%;
+    height: 20%;
     background-color: black;
 }
 
 .score-boxes {
-    display: flex;
-    width: 42%;
+    width: 25%;
     background-color: white;
+}
+
+.score-boxes h2 { 
+    text-align: center;   
 }
 
 .description {
@@ -55,5 +58,20 @@
     height: 60%;
 }
 
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: 95%;
+    margin: auto;
+}
 
+.btn-row {
+    display: flex;
+    justify-content: space-between;
+    height: 33%;    
+}
 
+.btn-row button {
+    width: 34%;
+}
