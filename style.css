@@ -74,4 +74,6 @@
 
 .btn-row button {
     width: 34%;
+    font-size: 70px;
+    font-weight: 600;
 }
