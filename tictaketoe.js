@@ -1,8 +1,27 @@
 let check = 1
 
 function clicked(selected) {
-    const btnsLoc = document.querySelector('.btn-container');
-    const btns = [...btnsLoc.querySelectorAll("button")];
+    if (selected.value === 'X' || selected.value === 'O') {
+        alert(`The space you selected already contains a ${selected.textContent} already, please select a different space`);
+    } else {
+        const element = document.querySelector('#' + selected.id);
+
+        if (check === 1) {
+            element.value = 'X';
+            element.textContent = 'X';
+            check++;
+        } else {
+            element.value = 'O';
+            element.textContent = 'O';
+            check--;
+        }
+        checkGame();   
+    }
+}
+
+function checkGame() {
+    const btnsLoc = document.querySelector('.btn-container'); //   "querySelector" returns a a NodeList
+    const btns = [...btnsLoc.querySelectorAll("button")]; // '[...]' This makes a NodeList into an array, we do this because NodeList doesnt have access to all functions an array does.
 
     const winLoc = [
         [ btns[0].value, btns[1].value, btns[2].value ],
@@ -15,43 +34,26 @@ function clicked(selected) {
         [ btns[2].value, btns[4].value, btns[6].value ]
     ];
 
-    for (let y = 0; y < winLoc.length - 1; y++) {
-        const vars = [ 'X', 'O'];
-        for (let i = 0; i < vars.length - 1; i++) {
-            if (winLoc[y][0] === vars[i] && winLoc[y][1] === vars[i] && winLoc[y][2] === vars[i])  {
-                console.log(vars[i]);
-                console.log('test');
-            }
+    for (let i = 0; i < winLoc.length; i++) {
+        // 'winLoc' holds each possible win scenerio in a array '[i]' allows it to run through all the inner arrays
+        if (winLoc[i].every(boxX => boxX === 'X')) { 
+            setTimeout(() => {
+                alert('Player X wins!');
+              }, 10); // Delays the message send by 10 milliseconds, needed because alert was appearing before value would appear on the box     
+        } else if (winLoc[i].every(boxO => boxO === 'O')) {
+            setTimeout(() => {
+                alert('Player O wins!');
+              }, 10);
+        } else {
+            checkTie(btns);
         }
     }
-
-
-    // for (let i = 0; i < btns.length; i++) {
-    //     let boardCheck = btns[i];
-    //     checkWin(boardCheck);
-    // }
-
-    //if () {
-
-    //} else {
-        if (selected.value === 'X' || selected.value === 'O') {
-            alert(`The space you selected already contains a ${selected.textContent} already, please select a different space`);
-        } else {
-            if (check === 1) {
-                const element = document.querySelector('#' + selected.id);
-                element.value = 'X';
-                element.textContent = 'X';
-                check++;
-            } else {
-                const element = document.querySelector('#' + selected.id);
-                element.value = 'O';
-                element.textContent = 'O';
-                check--;
-            }   
-        }
-    //} 
 }
 
-function checkWin(boardCheck) {
-    // console.log(boardCheck);
+function checkTie(buttons) {
+    if (buttons.every(box => box.value !== 'empty')) {
+        setTimeout(() => {
+            alert('The game was a tie, no winner...');
+          }, 10); 
+    }    
 }
