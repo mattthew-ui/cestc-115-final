@@ -36,7 +36,8 @@ function checkGame() {
     ];
 
     for (let i = 0; i < winLoc.length; i++) {
-        // 'winLoc' holds each possible win scenerio in a array '[i]' allows it to run through all the inner arrays
+        // 'winLoc' holds each possible win scenerio in a array '[i]' allows it to run through all the inner arrays '.every' looks through everything
+        // in the array.  boxX is a paramter that compares each variable to X in the inner array to check if they all equal X
         if (winLoc[i].every(boxX => boxX === 'X')) { 
             setTimeout(() => {
                 alert('Player X wins!');
