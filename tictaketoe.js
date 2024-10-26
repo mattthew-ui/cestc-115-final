@@ -1,28 +1,6 @@
-// let xScore =0
+ 
 let check = 1
-// let oScore = 0
-// let tieScore = 0
 
-// function hit(selected){
-//     console.log("test")
-//     if (selected.textContent !== '') return;
-
-//     selected.textContent = currentPlayer
-//     if(checkForWin()){
-//         alert('you ${currentPlayer} win')
-//     } else if (currentPlayer === 'X') {
-//             xScore++ 
-//             oScore++
-//             resetGame()
-//     }
-    
-//     else if(isTie()){
-//         alert('You tied')
-//         tieScore++
-//         resetGame()
-//     }
-    
-// }
 function clicked(selected) {
     if (selected.value === 'X' || selected.value === 'O') {
         alert(`The space you selected already contains a ${selected.textContent} already, please select a different space`);
