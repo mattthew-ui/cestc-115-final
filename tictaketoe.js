@@ -63,6 +63,7 @@ function checkTie(buttons) {
     if (buttons.every(box => box.value !== 'empty')) {
         setTimeout(() => {
             alert('The game was a tie, no winner...');
+            newScore('Tie')
             cleanBoard();
         }, 10); 
     }    
@@ -95,6 +96,6 @@ function newScore(winner) {
     }
     else{
      scoreTie++
-     document.getElementById('scoreO').textContent = scoreTie;
+     document.getElementById('scoreTie').textContent = scoreTie;
     }
 }
